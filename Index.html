@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <link rel="stylesheet" href="style.css">
+  <script src="bootstrap.min.js"></script>
+  <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+  <div class="container">
+  	<div class="row">
+      <div class="col-md-4">
+  		    <div class="form_main">
+              <h4 class="heading"><strong>Quick </strong> Contact <span></span></h4>
+                  <div class="form">
+                    <form action="contact_send_mail.php" method="post" id="contactFrm" name="contactFrm">
+                      <div class="form-group">
+                        <input type="text" required="" placeholder="Geselecteerde water" value="" name="name" class="txt">
+                      </div>
+                      <div class="form-group">
+                        <select class="form-control" id="exampleFormControlSelect1">
+                          <option>Zoet water</option>
+                          <option>Zout water</option>
+                        </select>
+                      </div>
+                      <input type="text" required="" placeholder="Geselcteerde seizoen" value="" name="mob" class="txt">
+                        <select class="form-control" id="exampleFormControlSelect1">
+                          <option>Zoet water</option>
+                          <option>Zout water</option>
+                        </select>
+                      <input type="text" required="" placeholder="Afmeting boot" value="" name="email" class="txt">
+
+                  	 <textarea placeholder="Your Message" name="mess" type="text" class="txt_3"></textarea>
+                       <input type="submit" value="submit" name="submit" class="txt2">
+                  </form>
+              </div>
+            </div>
+          </div
+  	</div>
+  </div>
+
+</body>
+</html>
