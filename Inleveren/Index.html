@@ -68,8 +68,6 @@
       var gewicht = document.getElementById('gewicht').value;
 
       var gewichtErbij = document.getElementById('gewichtErbij').value;
-      var ladingErbij = document.getElementById('ladingErbij').value;
-
       var gewichtTotaal = gewicht + gewichtErbij;
 
       if (gewichtTotaal >= WaterenStart.value)
@@ -79,7 +77,7 @@
 
       if (gewicht < WaterenStart)
       {
-        var gewichtdieerbijkan = WaterenStart - gewicht - gewichtErbij;
+        var gewichtdieerbijkan = WaterenStart - gewicht;
         document.getElementById("lbGewicht").innerHTML  = "Gewicht die erbij kan: " + gewichtdieerbijkan;
 
       }
@@ -88,10 +86,9 @@
         window.alert("Sorry je inhoud is te hoog");
       }
       if (lading < bootMaxRuimte) {
-        var InhoudTotaal = bootMaxRuimte - lading - ladingErbij;
+        var InhoudTotaal = bootMaxRuimte - lading;
         document.getElementById("lbInhoud").innerHTML  = "Inhoud die erbij kan: " + InhoudTotaal;
       }
-
     }
   </script>
 </body>
