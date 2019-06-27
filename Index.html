@@ -1,47 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Project week 4</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link rel="stylesheet" href="style.css">
-  <script src="bootstrap.min.js"></script>
+  <link rel="script" href="index.js">
   <script src="jquery-1.11.1.min.js"></script>
+  <script src="bootstrap.min.css"></script>
 </head>
 <body>
-
   <div class="container">
   	<div class="row">
       <div class="col-md-4">
   		    <div class="form_main">
-              <h4 class="heading"><strong>Quick </strong> Contact <span></span></h4>
+              <h4 class="heading"><strong>Berkenen </strong> gewicht <span></span></h4>
                   <div class="form">
-                    <form action="contact_send_mail.php" method="post" id="contactFrm" name="contactFrm">
+                    <form id="contactFrm" name="contactFrm" onsubmit="berekenLading()">
+                      <label>In welk water start je?</label>
                       <div class="form-group">
-                        <input type="text" required="" placeholder="Geselecteerde water" value="" name="name" class="txt">
-                      </div>
-                      <div class="form-group">
-                        <select class="form-control" id="exampleFormControlSelect1">
-                          <option>Zoet water</option>
-                          <option>Zout water</option>
+                        <select class="form-control" id="waterenStart">
+                          <option value="121500">TF: Tropisch zoet water</option>
+                          <option value="121000">F: Zoet water</option>
+                          <option value="120500">T: Tropisch gebied</option>
+                          <option value="120000">S: Zomer</option>
+                          <option value="119500">W: Winter</option>
+                          <option value="119000">WNA: Winter Noord-Atlantische zee</option>
                         </select>
-                      </div>
-                      <input type="text" required="" placeholder="Geselcteerde seizoen" value="" name="mob" class="txt">
-                        <select class="form-control" id="exampleFormControlSelect1">
-                          <option>Zoet water</option>
-                          <option>Zout water</option>
-                        </select>
-                      <input type="text" required="" placeholder="Afmeting boot" value="" name="email" class="txt">
 
-                  	 <textarea placeholder="Your Message" name="mess" type="text" class="txt_3"></textarea>
-                       <input type="submit" value="submit" name="submit" class="txt2">
+                      </div>
+                      <label>Inhoud lading in ton</label>
+                      <input type="text" required="" id="lading" placeholder="Inhoud lading" value="" name="mob" class="txt" >
+                      <label>Inhoud lading in ton erbij</label>
+                      <input type="text" required="" id="ladingErbij" placeholder="Inhoud lading erbij" value="" name="mob" class="txt" >
+                      <label>Gewicht van de lading</label>
+                      <input type="text" required="" id="gewicht" placeholder="Gewicht lading" name="" class="txt">
+                      <label>Gewicht erbij</label>
+                      <input type="text" id="gewichtErbij" placeholder="Gewicht lading erbij" name="" class="txt">
+
+                       <input type="submit" value="Berekenen" name="submit" class="txt2">
+                      <p id="lbInhoud">Inhoud die erbij kan: </p>
+                      <p id="lbGewicht">Gewicht die erbij kan: </p>
                   </form>
               </div>
             </div>
-          </div
+          </div>
   	</div>
   </div>
+  <script>
+    $( document ).ready(function() {
+      $("#contactFrm").submit(function(event){
+        event.preventDefault();
+        berekenLading();
+      })
+    });
+    function berekenLading()
+    {
 
+      var bootMaxRuimte = 180000;
+      var ws = document.getElementById("waterenStart");
+      var WaterenStart = ws.options[ws.selectedIndex].value;
+      //ladinginhoud
+      var lading = document.getElementById('lading').value;
+      var InhoudTotaal = bootMaxRuimte - lading;
+      //gewicht
+      var gewicht = document.getElementById('gewicht').value;
+
+      var gewichtErbij = document.getElementById('gewichtErbij').value;
+      var gewichtTotaal = gewicht + gewichtErbij;
+
+      if (gewichtTotaal >= WaterenStart.value)
+      {
+        window.alert("Sorry dit is te veel gewicht")
+      }
+
+      if (gewicht < WaterenStart)
+      {
+        var gewichtdieerbijkan = WaterenStart - gewicht;
+        document.getElementById("lbGewicht").innerHTML  = "Gewicht die erbij kan: " + gewichtdieerbijkan;
+
+      }
+      if (lading >= bootMaxRuimte )
+      {
+        window.alert("Sorry je inhoud is te hoog");
+      }
+      if (lading < bootMaxRuimte) {
+        var InhoudTotaal = bootMaxRuimte - lading;
+        document.getElementById("lbInhoud").innerHTML  = "Inhoud die erbij kan: " + InhoudTotaal;
+      }
+    }
+  </script>
 </body>
 </html>
