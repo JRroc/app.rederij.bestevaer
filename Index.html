@@ -72,6 +72,15 @@
 
       var gewichtTotaal = gewicht + gewichtErbij;
 
+      if (lading <= 0)
+      {
+        window.alert("Full een valide inhoud van het vracht in");
+      }
+      if (gewicht <= 0)
+      {
+        window.alert("Full een valide gewicht van het vracht in");
+      }
+
       if (gewichtTotaal >= WaterenStart.value)
       {
         window.alert("Sorry dit is te veel gewicht")
